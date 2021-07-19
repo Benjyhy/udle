@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { white } from "react-native-paper/lib/typescript/styles/colors";
 import { typo, borderRadius, palette } from "./base";
 
 export const globalStyles = StyleSheet.create({
@@ -25,11 +26,11 @@ export const globalStyles = StyleSheet.create({
     textInput: {
         width: "100%",
         borderRadius: borderRadius,
-        backgroundColor: "transparent",
-        border: `1px solid ${palette.lightGrey}`,
+        backgroundColor: "white",
+        borderWidth: 1,
+        borderColor: palette.lightGrey,
         height: 40,
-        marginBottom: "10px",
-        marginTop: "10px"
+        marginVertical: 10
     },
     noTextTransform: {
         textTransform: "none"

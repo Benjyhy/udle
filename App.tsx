@@ -1,10 +1,8 @@
-import React from 'react';
-import LoginScreen from './src/screens/LoginScreen';
+import RootScreen from './src/screens/RootScreen';
+import StorybookUIRoot from './storybook';
 
-export default function App() {
-  return (
-    <LoginScreen />
-  );
-}
+const SHOW_STORYBOOK = false;
 
+const UI = SHOW_STORYBOOK && __DEV__ ? StorybookUIRoot : RootScreen;
 
+export default UI;

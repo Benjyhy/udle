@@ -9,6 +9,6 @@ export const palette = {
 export const borderRadius = 5;
 
 export const typo = {
-    labor: "Open Sans",
-    emphasis: "Poppins"
+    labor: "OpenSans_400Regular",
+    emphasis: "Poppins_700Bold"
 }
