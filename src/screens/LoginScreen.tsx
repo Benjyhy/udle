@@ -1,6 +1,6 @@
 
 import React from "react";
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { TextInput, Title, Subheading, Button, Paragraph } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { AppRoutes } from '../navigation/AppRoutes'
@@ -9,8 +9,13 @@ import { globalStyles } from "../../styles/global";
 
 const LoginScreen = () => {
     const navigation = useNavigation();
+
     const handleLogin = () => {
         navigation.navigate(AppRoutes.FEED_SCREEN);
+    }
+
+    const handleTowardsSignUp = () => {
+        navigation.navigate(AppRoutes.SIGNUP_SCREEN);
     }
     return (
         <View style={styles.container} >
@@ -31,6 +36,9 @@ const LoginScreen = () => {
                     <Text style={globalStyles.noTextTransform}>Sign in with Google</Text>
                 </Button>
             </View>
+            <TouchableOpacity onPress={handleTowardsSignUp}>
+                <Paragraph>Nouveau sur Udle&nbsp;? S'inscrire</Paragraph>
+            </TouchableOpacity>
         </View>
     );
 };
