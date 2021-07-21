@@ -1,31 +1,56 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { TextInput, Title, Subheading, Button, Paragraph } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { AppRoutes } from '../navigation/AppRoutes'
 import { palette } from '../../styles/base';
 import { globalStyles } from "../../styles/global";
+import firebase from "firebase";
 
 const LoginScreen = () => {
     const navigation = useNavigation();
 
-    const handleLogin = () => {
-        navigation.navigate(AppRoutes.FEED_SCREEN);
-    }
-
     const handleTowardsSignUp = () => {
         navigation.navigate(AppRoutes.SIGNUP_SCREEN);
     }
+
+    const handleSignIn = () => {
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(mail, pwd)
+            .then(() => navigation.navigate(AppRoutes.TAB_NAVIGATOR))
+            .catch(error => setErrorMessage(error.message));
+    }
+
+    const [mail, setMail] = useState("");
+    const [pwd, setPwd] = useState("");
+    const [errorMessage, setErrorMessage] = useState();
+
     return (
         <View style={styles.container} >
+            {errorMessage && (
+                <Text style={{ color: "red" }}>{errorMessage}</Text>
+            )}
             <Title style={[globalStyles.title_emphasis, globalStyles.title_classic, styles.title]}>Lorem ipsum</Title>
             <Subheading style={[globalStyles.p, styles.alignSelfStart]}>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</Subheading>
-            <TextInput underlineColor={"transparent"} style={globalStyles.textInput} placeholder={"E-mail"} />
-            <TextInput underlineColor={"transparent"} style={globalStyles.textInput} placeholder={"Mot de passe"} />
+            <TextInput
+                underlineColor={"transparent"}
+                style={globalStyles.textInput}
+                placeholder={"E-mail"}
+                value={mail}
+                onChangeText={value => setMail(value)}
+            />
+            <TextInput
+                underlineColor={"transparent"}
+                style={globalStyles.textInput}
+                placeholder={"Mot de passe"}
+                value={pwd}
+                onChangeText={value => setPwd(value)}
+            />
             <Paragraph>Mot de passe oublié&nbsp;?</Paragraph>
             <View style={styles.btns}>
-                <Button color={"white"} style={[globalStyles.button, styles.primaryButton]} onPress={handleLogin}>
+                <Button color={"white"} style={[globalStyles.button, styles.primaryButton]} onPress={handleSignIn}>
                     <Text style={globalStyles.noTextTransform}>Se connecter</Text>
                 </Button>
                 <Paragraph style={styles.ou}>ou</Paragraph>

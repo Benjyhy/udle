@@ -15,7 +15,7 @@ const SignUpScreen = () => {
         firebase
             .auth()
             .createUserWithEmailAndPassword(mail, pwd)
-            .then(() => navigation.navigate(AppRoutes.FEED_SCREEN))
+            .then(() => navigation.navigate(AppRoutes.TAB_NAVIGATOR))
             .catch(error => setErrorMessage(error.message));
     }
 

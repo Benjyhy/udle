@@ -9,7 +9,7 @@ const LoadingScreen = () => {
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
-            navigation.navigate(user ? AppRoutes.FEED_SCREEN : AppRoutes.SIGNUP_SCREEN);
+            navigation.navigate(user ? AppRoutes.TAB_NAVIGATOR : AppRoutes.SIGNUP_SCREEN);
         })
     });
     return (
