@@ -32,15 +32,31 @@ const FeedScreen = () => {
     );
 
     return (
-        <SafeAreaView>
-            <FlatList
-                data={data}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                horizontal={true}
-            />
-        </SafeAreaView>
+        <View style={styles.container}>
+            <Title>Restaurants à proximité</Title>
+            <SafeAreaView>
+                <FlatList
+                    style={styles.proximite}
+                    data={data}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    horizontal={true}
+                />
+            </SafeAreaView>
+        </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingLeft: 20,
+        paddingRight: 20
+    },
+    proximite: {
+        marginLeft: -20,
+        marginRight: -20
+    }
+});
 
 export default FeedScreen;

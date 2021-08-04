@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { white } from "react-native-paper/lib/typescript/styles/colors";
 import { typo, borderRadius, palette } from "./base";
 
 export const globalStyles = StyleSheet.create({
@@ -7,6 +6,11 @@ export const globalStyles = StyleSheet.create({
         fontFamily: typo.emphasis,
         fontWeight: "bold",
         color: palette.grey
+    },
+    title_emphasis_light: {
+        fontFamily: typo.emphasis,
+        fontWeight: "bold",
+        color: "white"
     },
     title_large: {
         fontSize: 35
@@ -17,6 +21,10 @@ export const globalStyles = StyleSheet.create({
     p: {
         fontSize: 15,
         color: palette.grey
+    },
+    p_light: {
+        fontSize: 15,
+        color: "white"
     },
     button: {
         width: "100%",
