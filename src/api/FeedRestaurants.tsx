@@ -2,7 +2,7 @@ import firebase from "firebase";
 
 export async function getRestaurants() {
 
-    let restaurantsList = [];
+    let restaurantsList: any = [];
 
     const snapshot = await firebase.firestore()
         .collection('restaurants')

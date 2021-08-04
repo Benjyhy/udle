@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, SafeAreaView, FlatList } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, FlatList, StatusBar } from 'react-native';
 import { TextInput, Title, Subheading, Button, Paragraph } from 'react-native-paper';
 
 import { palette } from '../../../styles/base';
@@ -9,18 +9,20 @@ import RestaurantCard from "../../components/RestaurantCard";
 
 import { useQuery } from "react-query";
 import { getRestaurants } from "../../api/FeedRestaurants";
-
+interface Restaurant {
+    category: string,
+    distance: string,
+    img: string,
+    name: string,
+    id: string
+}
 const FeedScreen = () => {
-    const { isLoading, isError, data, error } = useQuery('restaurants', getRestaurants);
-    if (isLoading) {
+    const { status, data } = useQuery('restaurants', getRestaurants);
+    if (status === "loading") {
         return <Text>Loading...</Text>
     }
 
-    if (isError) {
-        return <Text>Error: {error.message}</Text>
-    }
-
-    const renderItem = ({ item }) => (
+    const renderItem = ({ item }: { item: Restaurant }) => (
         <RestaurantCard
             category={item.category}
             distance={item.distance}
@@ -35,6 +37,7 @@ const FeedScreen = () => {
                 data={data}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
+                horizontal={true}
             />
         </SafeAreaView>
     );

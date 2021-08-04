@@ -1,7 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-const RestaurantCard = ({ category, distance, img, name }) => {
+interface RestaurantCardProps {
+    category: string,
+    distance: string,
+    img: string,
+    name: string,
+}
+
+const RestaurantCard = ({ category, distance, img, name }: RestaurantCardProps) => {
     return (
         <View>
             <Text>{category}</Text>
