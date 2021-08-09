@@ -14,7 +14,7 @@ interface Restaurant {
     distance: string,
     img: string,
     name: string,
-    id: string
+    id_doc: string
 }
 const FeedScreen = () => {
     const { status, data } = useQuery('restaurants', getRestaurants);
@@ -28,9 +28,10 @@ const FeedScreen = () => {
             distance={item.distance}
             img={item.img}
             name={item.name}
+            id_doc={item.id_doc}
         />
     );
-
+    console.log(data);
     return (
         <View style={styles.container}>
             <Title>Restaurants à proximité</Title>
@@ -39,7 +40,7 @@ const FeedScreen = () => {
                     style={styles.proximite}
                     data={data}
                     renderItem={renderItem}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id_doc}
                     horizontal={true}
                 />
             </SafeAreaView>

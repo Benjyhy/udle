@@ -1,30 +1,41 @@
 import React from 'react';
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import { Card, Title, Paragraph, } from 'react-native-paper';
 import { borderRadius } from '../../styles/base';
 import { globalStyles } from '../../styles/global';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import { AppRoutes } from '../navigation/AppRoutes';
 
 interface RestaurantCardProps {
     category: string,
     distance: string,
     img: string,
     name: string,
+    id_doc: string
 }
 
-const RestaurantCard = ({ category, distance, img, name }: RestaurantCardProps) => {
+const RestaurantCard = ({ category, distance, img, name, id_doc }: RestaurantCardProps) => {
+
+    const navigation = useNavigation();
+
+    const handleRestaurantCardClick = () => {
+        navigation.navigate(AppRoutes.RESTAURANT_SCREEN, { restauId: id_doc });
+    }
+
     return (
         <View style={styles.container}>
-
-            <ImageBackground source={{ uri: img }} resizeMode="cover" style={styles.image}>
-                <LinearGradient start={{ x: 0, y: 0.5 }} end={{ x: 0, y: 1 }} colors={['#5454542b', '#00000094']} style={styles.linearG}>
-                    <Title style={globalStyles.title_emphasis_light}>{name}</Title>
-                    <View style={styles.infos}>
-                        <Paragraph style={globalStyles.p_light}>{distance} m</Paragraph>
-                        <Paragraph style={[globalStyles.p_light, styles.cat]}>{category}</Paragraph>
-                    </View>
-                </LinearGradient>
-            </ImageBackground>
+            <TouchableOpacity onPress={handleRestaurantCardClick}>
+                <ImageBackground source={{ uri: img }} resizeMode="cover" style={styles.image}>
+                    <LinearGradient start={{ x: 0, y: 0.5 }} end={{ x: 0, y: 1 }} colors={['#5454542b', '#00000094']} style={styles.linearG}>
+                        <Title style={globalStyles.title_emphasis_light}>{name}</Title>
+                        <View style={styles.infos}>
+                            <Paragraph style={globalStyles.p_light}>{distance} m</Paragraph>
+                            <Paragraph style={[globalStyles.p_light, styles.cat]}>{category}</Paragraph>
+                        </View>
+                    </LinearGradient>
+                </ImageBackground>
+            </TouchableOpacity>
         </View>
     );
 }
