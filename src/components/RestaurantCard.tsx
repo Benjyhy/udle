@@ -12,15 +12,15 @@ interface RestaurantCardProps {
     distance: string,
     img: string,
     name: string,
-    id_doc: string
+    id: string
 }
 
-const RestaurantCard = ({ category, distance, img, name, id_doc }: RestaurantCardProps) => {
+const RestaurantCard = ({ category, distance, img, name, id }: RestaurantCardProps) => {
 
     const navigation = useNavigation();
 
     const handleRestaurantCardClick = () => {
-        navigation.navigate(AppRoutes.RESTAURANT_SCREEN, { restauId: id_doc });
+        navigation.navigate(AppRoutes.RESTAURANT_SCREEN, { restauId: id });
     }
 
     return (

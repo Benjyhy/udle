@@ -8,10 +8,6 @@ export async function getRestaurants() {
         .collection('restaurants')
         .get()
 
-    snapshot.forEach(doc => {
-        let currentData = doc.data();
-        currentData.id_doc = doc.id;
-        restaurantsList.push(currentData);
-    });
+    snapshot.forEach(doc => restaurantsList.push(doc.data()));
     return restaurantsList;
 }

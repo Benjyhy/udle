@@ -16,7 +16,12 @@ const firebaseConfig = {
     appId: "1:329469301017:web:9b3555937fe389e317f588"
 };
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+} else {
+    firebase.app();
+}
+
 
 const queryClient = new QueryClient();
 
