@@ -31,7 +31,7 @@ const FeedScreen = () => {
             id={item.id}
         />
     );
-    console.log(data);
+
     return (
         <View style={styles.container}>
             <Title>Restaurants à proximité</Title>

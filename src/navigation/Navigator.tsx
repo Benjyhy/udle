@@ -3,7 +3,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import LoadingScreen from '../screens/LoadingScreen';
-import RestaurantScreen from '../screens/RestaurantScreen';
 import Tabs from './Tabs';
 import { AppRoutes } from './AppRoutes';
 
@@ -16,7 +15,6 @@ function StackNav() {
             <Stack.Screen name={AppRoutes.LOGIN_SCREEN} component={LoginScreen} />
             <Stack.Screen name={AppRoutes.TAB_NAVIGATOR} component={Tabs} />
             <Stack.Screen name={AppRoutes.SIGNUP_SCREEN} component={SignUpScreen} />
-            <Stack.Screen name={AppRoutes.RESTAURANT_SCREEN} component={RestaurantScreen} />
         </Stack.Navigator>
     );
 }

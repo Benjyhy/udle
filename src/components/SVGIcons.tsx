@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Path, G, Rect } from 'react-native-svg';
 import { palette } from '../../styles/base';
 
 export function HomeTabIcon(props: any) {
@@ -33,3 +33,35 @@ export function ProfileTabIcon(props: any) {
     </Svg>
   );
 }
+
+export function AddIcon() {
+  return (
+    <Svg width="17" height="17" viewBox="0 0 17 17">
+      <G id="Groupe_234" data-name="Groupe 234" transform="translate(-173 -690)">
+        <Rect id="Rectangle_130" data-name="Rectangle 130" width="17" height="17" rx="2" transform="translate(173 690)" fill="#367c76" />
+        <G id="x" transform="translate(181.5 681.107) rotate(45)">
+          <Path id="Tracé_139" data-name="Tracé 139" d="M15.476,9.12a.412.412,0,0,1,0,.584L9.7,15.477a.413.413,0,0,1-.584-.584L14.892,9.12a.412.412,0,0,1,.584,0Z" transform="translate(0)" fill="#fff" fill-rule="evenodd" />
+          <Path id="Tracé_140" data-name="Tracé 140" d="M9.12,9.12a.412.412,0,0,0,0,.584l5.773,5.773a.413.413,0,0,0,.584-.584L9.7,9.12a.412.412,0,0,0-.584,0Z" transform="translate(0)" fill="#fff" fill-rule="evenodd" />
+        </G>
+      </G>
+    </Svg>
+  );
+}
+
+export function RemoveIcon() {
+  return (
+    <Svg width="17" height="17" viewBox="0 0 17 17">
+      <G id="Groupe_403" data-name="Groupe 403" transform="translate(-173 -690)">
+        <G id="Rectangle_130" data-name="Rectangle 130" transform="translate(173 690)" fill="none" stroke="#367c76" stroke-width="1">
+          <Rect width="17" height="17" rx="2" stroke="none" />
+          <Rect x="0.5" y="0.5" width="16" height="16" rx="1.5" fill="none" />
+        </G>
+        <G id="x" transform="translate(181.5 681.107) rotate(45)">
+          <Path id="Tracé_139" data-name="Tracé 139" d="M15.476,9.12a.412.412,0,0,1,0,.584L9.7,15.477a.413.413,0,0,1-.584-.584L14.892,9.12a.412.412,0,0,1,.584,0Z" transform="translate(0)" fill="#367c76" fill-rule="evenodd" />
+          <Path id="Tracé_140" data-name="Tracé 140" d="M9.412,9Z" transform="translate(0)" fill="#367c76" fill-rule="evenodd" />
+        </G>
+      </G>
+    </Svg>
+  )
+}
+

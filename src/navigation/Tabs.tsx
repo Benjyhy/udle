@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import FeedScreen from '../screens/tabs/FeedScreen';
+import FeedStackScreen from './FeedStackScreen';
 import SearchScreen from '../screens/tabs/SearchScreen';
 import ProfileScreen from '../screens/tabs/ProfileScreen';
 import CartScreen from '../screens/tabs/CartScreen';
 import { palette } from '../../styles/base';
-import { HomeTabIcon, SearchTabIcon, CartTabIcon, ProfileTabIcon } from '../components/TabIcons';
+import { HomeTabIcon, SearchTabIcon, CartTabIcon, ProfileTabIcon } from '../components/SVGIcons';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +29,8 @@ const Tabs = () => {
             }}
         >
             <Tab.Screen
-                name="Accueil" component={FeedScreen}
+                name="Accueil"
+                component={FeedStackScreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View style={styles.tabItem}>

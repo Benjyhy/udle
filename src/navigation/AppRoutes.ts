@@ -3,5 +3,6 @@ export enum AppRoutes {
     LOGIN_SCREEN = "Login",
     SIGNUP_SCREEN = "S'inscrire",
     TAB_NAVIGATOR = "Tabs",
-    RESTAURANT_SCREEN = "Votre restaurant"
+    RESTAURANT_SCREEN = "Votre restaurant",
+    FEED_SCREEN = "Home"
 }
