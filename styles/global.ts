@@ -42,5 +42,9 @@ export const globalStyles = StyleSheet.create({
     },
     noTextTransform: {
         textTransform: "none"
+    },
+    fontSizeXS: {
+        fontSize: 12,
+        lineHeight: 18
     }
 });

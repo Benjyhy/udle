@@ -4,6 +4,7 @@ import { Title } from 'react-native-paper';
 import { useQuery } from 'react-query';
 import { getProducts } from '../../api/RestaurantProducts';
 import ProductCard from '../ProductCard';
+import { globalStyles } from '../../../styles/global';
 
 interface Product {
     price: number,
@@ -32,7 +33,7 @@ const Desserts = (restauId: any) => {
 
     return (
         <View style={styles.container}>
-            <Title>Desserts</Title>
+            <Title style={globalStyles.title_emphasis}>Desserts</Title>
             <SafeAreaView>
                 <FlatList
                     data={desserts}
