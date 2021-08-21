@@ -27,6 +27,7 @@ const Tabs = () => {
                     ...styles.shadow
                 },
             }}
+
         >
             <Tab.Screen
                 name="Accueil"

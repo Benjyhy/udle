@@ -12,14 +12,14 @@ interface ProductCardProps {
     id: string
 }
 
-const ProductCard = ({ price, img, title, id }: ProductCardProps) => {
+const ProductCard = (item: ProductCardProps) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity>
-                <Image source={{ uri: img }} resizeMode="cover" style={styles.image} />
-                <Title style={[globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{title}</Title>
+            <TouchableOpacity style={styles.overflowHidden}>
+                <Image source={{ uri: item.img }} resizeMode="cover" style={styles.image} />
+                <Title style={[globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{item.title}</Title>
                 <View style={styles.infoContainer}>
-                    <Text style={[globalStyles.p, globalStyles.fontSizeXS]}>{price}€</Text>
+                    <Text style={[globalStyles.p, globalStyles.fontSizeXS]}>{item.price}€</Text>
                     <View>
                         <AddIcon />
                     </View>
@@ -34,12 +34,15 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         width: "47.5%",
         borderRadius: borderRadius,
-        shadowColor: 'rgba(124, 124, 124, 0.856)',
+        shadowColor: 'rgba(66, 60, 60, 0.11)',
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.3,
-        shadowRadius: 2,
-        backgroundColor: "white",
-        overflow: "hidden"
+        shadowOpacity: 1,
+        shadowRadius: 5,
+        backgroundColor: "white"
+    },
+    overflowHidden: {
+        overflow: "hidden",
+        borderRadius: borderRadius,
     },
     infoContainer: {
         paddingLeft: 15,
