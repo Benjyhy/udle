@@ -25,6 +25,8 @@ const RestaurantScreen = ({ route }: any) => {
         return <Text>Loading...</Text>
     }
 
+
+
     const renderSection = ({ item }: any) => {
         return (
             <SafeAreaView>
@@ -41,10 +43,13 @@ const RestaurantScreen = ({ route }: any) => {
 
     const renderListItem = ({ item }: { item: Menu }) => (
         <ProductCard
+            updateCartAdd={(id) => setOrder([...order, id])}
+            updateCartRemove={(id) => setOrder(order.filter(item => item !== id))}
             title={item.title}
             id={item.id}
             img={item.img}
             price={item.price}
+
         />
     );
 

@@ -13,20 +13,26 @@ interface ProductCardProps {
     id: string
 }
 
-const ProductCard = (item: ProductCardProps) => {
+const ProductCard = (props: any) => {
     const [active, setActive] = useState(false);
 
     const handlePressProduct = () => {
-        setActive(!active)
+        setActive(!active);
+        if (!active) {
+            props.updateCartAdd(props.id);
+        } else if (active) {
+            props.updateCartRemove(props.id);
+        }
+
     };
 
     return (
         <Animated.View style={active ? [styles.container, styles.containerActiveBG] : [styles.container, styles.containerBG]}>
             <TouchableOpacity style={styles.overflowHidden} onPress={handlePressProduct}>
-                <Image source={{ uri: item.img }} resizeMode="cover" style={styles.image} />
-                <Title style={[active ? globalStyles.title_emphasis_light : globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{item.title}</Title>
+                <Image source={{ uri: props.img }} resizeMode="cover" style={styles.image} />
+                <Title style={[active ? globalStyles.title_emphasis_light : globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{props.title}</Title>
                 <View style={styles.infoContainer}>
-                    <Text style={[active ? globalStyles.p_light : globalStyles.p, globalStyles.fontSizeXS]}>{item.price}€</Text>
+                    <Text style={[active ? globalStyles.p_light : globalStyles.p, globalStyles.fontSizeXS]}>{props.price}€</Text>
                     <View>
                         {active ? (
                             <RemoveIcon />
