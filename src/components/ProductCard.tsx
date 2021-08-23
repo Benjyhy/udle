@@ -1,9 +1,10 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Animated } from 'react-native';
 import { Title } from 'react-native-paper';
 import { globalStyles } from '../../styles/global';
 import { borderRadius } from '../../styles/base';
-import { AddIcon } from '../components/SVGIcons';
+import { AddIcon, RemoveIcon } from '../components/SVGIcons';
+import { palette } from '../../styles/base'
 
 interface ProductCardProps {
     price: number,
@@ -13,19 +14,30 @@ interface ProductCardProps {
 }
 
 const ProductCard = (item: ProductCardProps) => {
+    const [active, setActive] = useState(false);
+
+    const handlePressProduct = () => {
+        setActive(!active)
+    };
+
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.overflowHidden}>
+        <Animated.View style={active ? [styles.container, styles.containerActiveBG] : [styles.container, styles.containerBG]}>
+            <TouchableOpacity style={styles.overflowHidden} onPress={handlePressProduct}>
                 <Image source={{ uri: item.img }} resizeMode="cover" style={styles.image} />
-                <Title style={[globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{item.title}</Title>
+                <Title style={[active ? globalStyles.title_emphasis_light : globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{item.title}</Title>
                 <View style={styles.infoContainer}>
-                    <Text style={[globalStyles.p, globalStyles.fontSizeXS]}>{item.price}€</Text>
+                    <Text style={[active ? globalStyles.p_light : globalStyles.p, globalStyles.fontSizeXS]}>{item.price}€</Text>
                     <View>
-                        <AddIcon />
+                        {active ? (
+                            <RemoveIcon />
+                        ) : (
+                            <AddIcon />
+                        )
+                        }
                     </View>
                 </View>
             </TouchableOpacity>
-        </View>
+        </Animated.View>
     );
 }
 
@@ -38,7 +50,12 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 1,
         shadowRadius: 5,
+    },
+    containerBG: {
         backgroundColor: "white"
+    },
+    containerActiveBG: {
+        backgroundColor: palette.darkGreen
     },
     overflowHidden: {
         overflow: "hidden",

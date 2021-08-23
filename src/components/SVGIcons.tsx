@@ -52,16 +52,69 @@ export function RemoveIcon() {
   return (
     <Svg width="17" height="17" viewBox="0 0 17 17">
       <G id="Groupe_403" data-name="Groupe 403" transform="translate(-173 -690)">
-        <G id="Rectangle_130" data-name="Rectangle 130" transform="translate(173 690)" fill="none" stroke="#367c76" stroke-width="1">
+        <G id="Rectangle_130" data-name="Rectangle 130" transform="translate(173 690)" fill="none" stroke="white" stroke-width="1">
           <Rect width="17" height="17" rx="2" stroke="none" />
           <Rect x="0.5" y="0.5" width="16" height="16" rx="1.5" fill="none" />
         </G>
         <G id="x" transform="translate(181.5 681.107) rotate(45)">
-          <Path id="Tracé_139" data-name="Tracé 139" d="M15.476,9.12a.412.412,0,0,1,0,.584L9.7,15.477a.413.413,0,0,1-.584-.584L14.892,9.12a.412.412,0,0,1,.584,0Z" transform="translate(0)" fill="#367c76" fill-rule="evenodd" />
-          <Path id="Tracé_140" data-name="Tracé 140" d="M9.412,9Z" transform="translate(0)" fill="#367c76" fill-rule="evenodd" />
+          <Path id="Tracé_139" data-name="Tracé 139" d="M15.476,9.12a.412.412,0,0,1,0,.584L9.7,15.477a.413.413,0,0,1-.584-.584L14.892,9.12a.412.412,0,0,1,.584,0Z" transform="translate(0)" fill="white" fill-rule="evenodd" />
+          <Path id="Tracé_140" data-name="Tracé 140" d="M9.412,9Z" transform="translate(0)" fill={palette.darkGreen} fill-rule="evenodd" />
         </G>
       </G>
     </Svg>
   )
 }
+
+export function HeartIcon(props: any) {
+  return (
+    <Svg width="23.25" height="22.233" viewBox="0 0 23.25 22.233">
+      <Path id="heart" d="M22.8,5.556a10.828,10.828,0,0,1-1.69,9.484,26.364,26.364,0,0,1-4.2,4.631c-1.382,1.343-4.474,4-5.294,4.074A6.684,6.684,0,0,1,9.5,22.3C6.268,19.74,2.789,16.621,1.024,13.21c-1.479-3.274-1.482-7.324.82-9.834a6.612,6.612,0,0,1,9.768.675,6.689,6.689,0,0,1,2.262-1.959A6.69,6.69,0,0,1,22.8,5.556Z" transform="translate(0 -1.511)" fill={props.on ? palette.darkGreen : "#d6d6d6"} />
+    </Svg>
+  )
+}
+
+export function StarIcon() {
+  return (
+    <Svg width="19" height="19" viewBox="0 0 19 19">
+      <Path id="Polygone_42" data-name="Polygone 42" d="M8.552,2.82a1,1,0,0,1,1.9,0l1.2,3.584a1,1,0,0,0,.921.681l3.71.1a1,1,0,0,1,.6,1.778L13.857,11.4a1,1,0,0,0-.335,1.05l1.067,3.78a1,1,0,0,1-1.549,1.082l-2.955-2.138a1,1,0,0,0-1.172,0L5.959,17.314A1,1,0,0,1,4.41,16.232l1.067-3.78a1,1,0,0,0-.335-1.05L2.116,8.963a1,1,0,0,1,.6-1.778l3.71-.1A1,1,0,0,0,7.348,6.4Z" fill="#fab960" />
+    </Svg>
+
+  )
+}
+
+export function WalkingIcon() {
+  return (
+    <Svg width="13.833" height="22.466" viewBox="0 0 13.833 22.466">
+      <G id="walk" transform="translate(0)">
+        <Path id="Tracé_25" data-name="Tracé 25" d="M23.3,5.329a1.954,1.954,0,1,1-1.954-1.954A1.954,1.954,0,0,1,23.3,5.329Z" transform="translate(-12.677 -3.375)" fill="#2999d5" />
+        <Path id="Tracé_26" data-name="Tracé 26" d="M20.517,9.819,17.044,8.636,12.6,10.254a1.38,1.38,0,0,0-.906,1.292v3.348h1.834V11.868l2.8-1.017L11.153,26.814h1.926l2.87-8.929.451.148L18.568,22v4.81H20.4V21.887a1.379,1.379,0,0,0-.168-.659l-2.153-3.947L19.74,12.2l1.1,1.988a1.376,1.376,0,0,0,1.2.707h2.94V13.059h-2.67Z" transform="translate(-11.153 -4.348)" fill="#2999d5" />
+      </G>
+    </Svg>
+  )
+}
+
+export function GeoIcon() {
+  return (
+    <Svg width="13.474" height="17.965" viewBox="0 0 13.474 17.965">
+      <G id="geo-alt" transform="translate(0 0)">
+        <Path id="Tracé_28" data-name="Tracé 28" d="M11.237,17.965s6.737-6.384,6.737-11.228a6.737,6.737,0,1,0-13.474,0C4.5,11.581,11.237,17.965,11.237,17.965Zm0-7.86A3.368,3.368,0,1,0,7.868,6.737,3.368,3.368,0,0,0,11.237,10.105Z" transform="translate(-4.5 0)" fill="#707070" fill-rule="evenodd" />
+      </G>
+    </Svg>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

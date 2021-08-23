@@ -13,10 +13,12 @@ export const globalStyles = StyleSheet.create({
         color: "white"
     },
     title_large: {
-        fontSize: 35
+        fontSize: 35,
+        lineHeight: 47
     },
     title_classic: {
-        fontSize: 25
+        fontSize: 25,
+        lineHeight: 37.5
     },
     p: {
         fontSize: 15,
