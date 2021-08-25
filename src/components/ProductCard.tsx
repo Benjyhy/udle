@@ -5,34 +5,37 @@ import { globalStyles } from '../../styles/global';
 import { borderRadius } from '../../styles/base';
 import { AddIcon, RemoveIcon } from '../components/SVGIcons';
 import { palette } from '../../styles/base'
+import { useDispatch } from 'react-redux';
+import { addItem, removeItem } from '../actions'
 
 interface ProductCardProps {
     price: number,
     img: string,
     title: string,
-    id: string
+    id: string,
+    restauId: string
 }
 
-const ProductCard = (props: any) => {
+const ProductCard = (item: ProductCardProps) => {
     const [active, setActive] = useState(false);
+    const dispatch = useDispatch();
 
     const handlePressProduct = () => {
-        setActive(!active);
-        if (!active) {
-            props.updateCartAdd(props.id);
-        } else if (active) {
-            props.updateCartRemove(props.id);
+        if (active) {
+            dispatch(removeItem(item));
+        } else {
+            dispatch(addItem(item));
         }
-
+        setActive(!active);
     };
 
     return (
         <Animated.View style={active ? [styles.container, styles.containerActiveBG] : [styles.container, styles.containerBG]}>
             <TouchableOpacity style={styles.overflowHidden} onPress={handlePressProduct}>
-                <Image source={{ uri: props.img }} resizeMode="cover" style={styles.image} />
-                <Title style={[active ? globalStyles.title_emphasis_light : globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{props.title}</Title>
+                <Image source={{ uri: item.img }} resizeMode="cover" style={styles.image} />
+                <Title style={[active ? globalStyles.title_emphasis_light : globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{item.title}</Title>
                 <View style={styles.infoContainer}>
-                    <Text style={[active ? globalStyles.p_light : globalStyles.p, globalStyles.fontSizeXS]}>{props.price}€</Text>
+                    <Text style={[active ? globalStyles.p_light : globalStyles.p, globalStyles.fontSizeXS]}>{item.price}€</Text>
                     <View>
                         {active ? (
                             <RemoveIcon />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, ScrollView, SafeAreaView, SectionList, StyleSheet, FlatList, ImageBackground } from 'react-native';
 import { Title, Paragraph } from 'react-native-paper'
 import ProductCard from '../components/ProductCard';
@@ -17,16 +17,11 @@ interface Menu {
 
 const RestaurantScreen = ({ route }: any) => {
 
-    const [order, setOrder] = useState([]);
-
     const { status, data, error } = useQuery(['meals', route.params.restauId], () => getProducts(route.params.restauId));
 
     if (status === "loading") {
         return <Text>Loading...</Text>
     }
-
-
-
     const renderSection = ({ item }: any) => {
         return (
             <SafeAreaView>
@@ -34,7 +29,7 @@ const RestaurantScreen = ({ route }: any) => {
                     data={item.list}
                     numColumns={2}
                     renderItem={renderListItem}
-                    keyExtractor={item => item.title}
+                    keyExtractor={item => item.id}
                     columnWrapperStyle={{ justifyContent: 'space-between', marginLeft: '5%', marginRight: '5%' }}
                 />
             </SafeAreaView>
@@ -43,13 +38,11 @@ const RestaurantScreen = ({ route }: any) => {
 
     const renderListItem = ({ item }: { item: Menu }) => (
         <ProductCard
-            updateCartAdd={(id) => setOrder([...order, id])}
-            updateCartRemove={(id) => setOrder(order.filter(item => item !== id))}
             title={item.title}
             id={item.id}
             img={item.img}
             price={item.price}
-
+            restauId={route.params.restauId}
         />
     );
 
@@ -68,7 +61,6 @@ const RestaurantScreen = ({ route }: any) => {
                     </View>
                 </ImageBackground>
                 <View style={styles.header__infos}>
-                    <Text>{order}</Text>
                     <Title style={[globalStyles.title_emphasis, globalStyles.title_classic]}>{DATA.name}</Title>
                     <View style={[styles.tagsContainer, styles.row]}>
                         {DATA.tags.map((tag: string, key: number) => {

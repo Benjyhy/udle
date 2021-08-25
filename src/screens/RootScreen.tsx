@@ -6,6 +6,14 @@ import { useFonts, OpenSans_400Regular, OpenSans_700Bold } from '@expo-google-fo
 import { Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import firebase from 'firebase';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { allReducers } from '../reducers';
+
+const store = createStore(
+    allReducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const firebaseConfig = {
     apiKey: "AIzaSyAHzf4Q4RbL8Zu0nZ-tDIBhKog5XfdYA1g",
@@ -39,9 +47,11 @@ const RootScreen = () => {
     } else {
         return (
             <QueryClientProvider client={queryClient}>
-                <NavigationContainer>
-                    <StackNav />
-                </ NavigationContainer>
+                <Provider store={store}>
+                    <NavigationContainer>
+                        <StackNav />
+                    </ NavigationContainer>
+                </Provider>
             </QueryClientProvider>
         );
     }
