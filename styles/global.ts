@@ -20,6 +20,10 @@ export const globalStyles = StyleSheet.create({
         fontSize: 25,
         lineHeight: 37.5
     },
+    title_medium: {
+        fontSize: 20,
+        lineHeight: 30
+    },
     p: {
         fontSize: 15,
         color: palette.grey

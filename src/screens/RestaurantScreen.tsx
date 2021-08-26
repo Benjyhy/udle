@@ -43,6 +43,7 @@ const RestaurantScreen = ({ route }: any) => {
             img={item.img}
             price={item.price}
             restauId={route.params.restauId}
+            restauName={route.params.restauName}
         />
     );
 

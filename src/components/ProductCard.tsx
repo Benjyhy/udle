@@ -1,43 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Animated } from 'react-native';
 import { Title } from 'react-native-paper';
 import { globalStyles } from '../../styles/global';
 import { borderRadius } from '../../styles/base';
 import { AddIcon, RemoveIcon } from '../components/SVGIcons';
 import { palette } from '../../styles/base'
-import { useDispatch } from 'react-redux';
-import { addItem, removeItem } from '../actions'
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../reducers';
+import { addItem, removeItem, activeItem, unactiveItem } from '../actions';
 
 interface ProductCardProps {
     price: number,
     img: string,
     title: string,
     id: string,
-    restauId: string
+    restauId: string,
+    restauName: string
 }
 
 const ProductCard = (item: ProductCardProps) => {
-    const [active, setActive] = useState(false);
     const dispatch = useDispatch();
+    const active = useSelector((state: RootState) => state.toggle);
 
     const handlePressProduct = () => {
-        if (active) {
+        if (active.includes(item.id)) {
             dispatch(removeItem(item));
+            dispatch(unactiveItem(item));
         } else {
             dispatch(addItem(item));
+            dispatch(activeItem(item));
         }
-        setActive(!active);
     };
 
     return (
-        <Animated.View style={active ? [styles.container, styles.containerActiveBG] : [styles.container, styles.containerBG]}>
+        <Animated.View style={active.includes(item.id) ? [styles.container, styles.containerActiveBG] : [styles.container, styles.containerBG]}>
             <TouchableOpacity style={styles.overflowHidden} onPress={handlePressProduct}>
                 <Image source={{ uri: item.img }} resizeMode="cover" style={styles.image} />
-                <Title style={[active ? globalStyles.title_emphasis_light : globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{item.title}</Title>
+                <Title style={[active.includes(item.id) ? globalStyles.title_emphasis_light : globalStyles.title_emphasis, globalStyles.fontSizeXS, styles.title]}>{item.title}</Title>
                 <View style={styles.infoContainer}>
-                    <Text style={[active ? globalStyles.p_light : globalStyles.p, globalStyles.fontSizeXS]}>{item.price}€</Text>
+                    <Text style={[active.includes(item.id) ? globalStyles.p_light : globalStyles.p, globalStyles.fontSizeXS]}>{item.price}€</Text>
                     <View>
-                        {active ? (
+                        {active.includes(item.id) ? (
                             <RemoveIcon />
                         ) : (
                             <AddIcon />

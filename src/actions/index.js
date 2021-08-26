@@ -11,3 +11,17 @@ export const removeItem = (item) => {
         payload: item
     }
 }
+
+export const activeItem = (item) => {
+    return {
+        type: 'ACTIVE_ITEM',
+        payload: item
+    }
+}
+
+export const unactiveItem = (item) => {
+    return {
+        type: 'UNACTIVE_ITEM',
+        payload: item
+    }
+}

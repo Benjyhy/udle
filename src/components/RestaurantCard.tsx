@@ -20,7 +20,7 @@ const RestaurantCard = ({ category, distance, img, name, id }: RestaurantCardPro
     const navigation = useNavigation();
 
     const handleRestaurantCardClick = () => {
-        navigation.navigate(AppRoutes.RESTAURANT_SCREEN, { restauId: id });
+        navigation.navigate(AppRoutes.RESTAURANT_SCREEN, { restauId: id, restauName: name });
     }
 
     return (

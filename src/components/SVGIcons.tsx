@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Svg, { Path, G, Rect } from 'react-native-svg';
+import Svg, { Path, G, Rect, Circle } from 'react-native-svg';
 import { palette } from '../../styles/base';
 
 export function HomeTabIcon(props: any) {
@@ -102,6 +102,24 @@ export function GeoIcon() {
     </Svg>
   )
 }
+
+export function DeleteIcon() {
+  return (
+    <Svg id="Groupe_578" data-name="Groupe 578" width="25" height="25" viewBox="0 0 25 25">
+      <G id="Ellipse_110" data-name="Ellipse 110" fill="none" stroke="#f04747" stroke-width="1">
+        <Circle cx="12.5" cy="12.5" r="12.5" stroke="none" />
+        <Circle cx="12.5" cy="12.5" r="12" fill="none" />
+      </G>
+      <G id="x" transform="translate(-0.81 -0.81)">
+        <Path id="Tracé_342" data-name="Tracé 342" d="M17.463,9.157a.539.539,0,0,1,0,.763L9.919,17.464a.54.54,0,1,1-.763-.763L16.7,9.157a.539.539,0,0,1,.763,0Z" transform="translate(0 0)" fill="#f04747" fill-rule="evenodd" />
+        <Path id="Tracé_343" data-name="Tracé 343" d="M9.157,9.157a.539.539,0,0,0,0,.763L16.7,17.464a.54.54,0,1,0,.763-.763L9.92,9.157a.539.539,0,0,0-.763,0Z" transform="translate(0 0)" fill="#f04747" fill-rule="evenodd" />
+      </G>
+    </Svg>
+  )
+}
+
+
+
 
 
 
