@@ -118,6 +118,14 @@ export function DeleteIcon() {
   )
 }
 
+export function ChevronRightIcon() {
+  return (
+    <Svg width="5.75" height="10.057" viewBox="0 0 5.75 10.057">
+      <Path id="Icon_ionic-ios-arrow-forward" data-name="Icon ionic-ios-arrow-forward" d="M15.263,11.223l-3.806-3.8a.716.716,0,0,1,0-1.015.725.725,0,0,1,1.018,0l4.312,4.309a.717.717,0,0,1,.021.991l-4.33,4.339a.719.719,0,1,1-1.018-1.015Z" transform="translate(-11.246 -6.196)" fill="#707070" />
+    </Svg>
+  )
+}
+
 
 
 

@@ -26,7 +26,8 @@ export const globalStyles = StyleSheet.create({
     },
     p: {
         fontSize: 15,
-        color: palette.grey
+        color: palette.grey,
+        fontFamily: typo.labor
     },
     p_light: {
         fontSize: 15,
