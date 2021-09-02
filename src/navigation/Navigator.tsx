@@ -10,7 +10,10 @@ const Stack = createStackNavigator();
 
 function StackNav() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}>
             <Stack.Screen name={AppRoutes.LOADING_SCREEN} component={LoadingScreen} />
             <Stack.Screen name={AppRoutes.LOGIN_SCREEN} component={LoginScreen} />
             <Stack.Screen name={AppRoutes.TAB_NAVIGATOR} component={Tabs} />

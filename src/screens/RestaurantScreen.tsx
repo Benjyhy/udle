@@ -1,12 +1,14 @@
-import React from 'react';
-import { View, Text, ScrollView, SafeAreaView, SectionList, StyleSheet, FlatList, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ScrollView, SafeAreaView, SectionList, StyleSheet, FlatList, ImageBackground, TouchableOpacity } from 'react-native';
 import { Title, Paragraph } from 'react-native-paper'
 import ProductCard from '../components/ProductCard';
 import { useQuery } from 'react-query';
 import { getProducts } from '../api/RestaurantProducts';
 import { globalStyles } from '../../styles/global';
-import { HeartIcon, StarIcon, WalkingIcon, GeoIcon } from '../components/SVGIcons'
+import { HeartIcon, StarIcon, WalkingIcon, GeoIcon, GoBackIcon } from '../components/SVGIcons'
 import { borderRadius } from '../../styles/base';
+import { useNavigation } from '@react-navigation/native';
+import { AppRoutes } from '../navigation/AppRoutes';
 
 interface Menu {
     title: "string",
@@ -16,9 +18,9 @@ interface Menu {
 }
 
 const RestaurantScreen = ({ route }: any) => {
-
+    const [fav, setFav] = useState(false);
     const { status, data, error } = useQuery(['meals', route.params.restauId], () => getProducts(route.params.restauId));
-
+    const navigation = useNavigation();
     if (status === "loading") {
         return <Text>Loading...</Text>
     }
@@ -57,9 +59,12 @@ const RestaurantScreen = ({ route }: any) => {
         <ScrollView style={styles.container}>
             <View>
                 <ImageBackground source={{ uri: DATA.img }} resizeMode="cover" style={styles.header__img}>
-                    <View style={styles.heartContainer}>
-                        <HeartIcon on="true" />
-                    </View>
+                    <TouchableOpacity style={styles.heartContainer} onPress={() => setFav(!fav)}>
+                        <HeartIcon on={fav ? true : false} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.goBackIconContainer} onPress={() => navigation.navigate(AppRoutes.FEED_SCREEN)}>
+                        <GoBackIcon />
+                    </TouchableOpacity>
                 </ImageBackground>
                 <View style={styles.header__infos}>
                     <Title style={[globalStyles.title_emphasis, globalStyles.title_classic]}>{DATA.name}</Title>
@@ -128,8 +133,6 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         padding: 20,
         borderRadius: 50,
-        width: 20,
-        height: 20,
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
@@ -173,6 +176,10 @@ const styles = StyleSheet.create({
     },
     miniCardInfos__paragraph: {
         marginLeft: 5
+    },
+    goBackIconContainer: {
+        position: "absolute",
+        left: "5%"
     }
 });
 

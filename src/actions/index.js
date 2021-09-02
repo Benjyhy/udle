@@ -25,3 +25,15 @@ export const unactiveItem = (item) => {
         payload: item
     }
 }
+
+export const paymentDone = () => {
+    return {
+        type: 'PAID',
+    }
+}
+
+export const paymentRequired = () => {
+    return {
+        type: 'NOT_PAID',
+    }
+}

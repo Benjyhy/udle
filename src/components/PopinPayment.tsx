@@ -4,6 +4,10 @@ import { Title, Button, Paragraph } from 'react-native-paper';
 import { typo, palette } from '../../styles/base';
 import { globalStyles } from '../../styles/global';
 import PaymentMethod from './PaymentMethod';
+import { sendOrder } from '../api/SendOrder';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../reducers';
+import { paymentDone } from '../actions';
 
 interface PopinPaymentProps {
     toggled: boolean,
@@ -13,8 +17,14 @@ interface PopinPaymentProps {
 
 const PopinPayment = ({ toggled, togglePopin, total }: PopinPaymentProps) => {
 
-    const translateYAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
-
+    const translateYAnim = useRef(new Animated.Value(0)).current;
+    const cart = useSelector((state: RootState) => state.cart);
+    const dispatch = useDispatch();
+    const handleSendOrder = () => {
+        dispatch(paymentDone());
+        togglePopin(false);
+        sendOrder(cart);
+    }
     useEffect(() => {
         Animated.timing(
             translateYAnim,
@@ -39,7 +49,7 @@ const PopinPayment = ({ toggled, togglePopin, total }: PopinPaymentProps) => {
                 }]}>
                     <View style={styles.infosContainer}>
                         <PaymentMethod />
-                        <Title style={[globalStyles.title_emphasis, globalStyles.title_classic, styles.marginBot]}>Infos commande</Title>
+                        <Title style={[globalStyles.title_emphasis, globalStyles.title_classic, styles.marginBot, { width: "100%" }]}>Infos commande</Title>
                         <View style={styles.totaux}>
                             <Paragraph style={globalStyles.p}>Sous total</Paragraph>
                             <Paragraph style={globalStyles.p}>{total} €</Paragraph>
@@ -52,7 +62,7 @@ const PopinPayment = ({ toggled, togglePopin, total }: PopinPaymentProps) => {
                             <Paragraph style={globalStyles.p}>Total</Paragraph>
                             <Paragraph style={styles.totalFinal}>{total + 0.50} €</Paragraph>
                         </View>
-                        <Button color={"white"} style={[globalStyles.button, styles.primaryButton]} >
+                        <Button color={"white"} style={[globalStyles.button, styles.primaryButton]} onPress={handleSendOrder}>
                             <Text style={globalStyles.noTextTransform}>Commander</Text>
                         </Button>
                     </View>
@@ -90,19 +100,21 @@ const styles = StyleSheet.create({
     },
     infosContainer: {
         width: "80%",
-        marginHorizontal: "auto",
-        marginVertical: 0
+        marginHorizontal: "10%",
+        marginVertical: 0,
+        alignItems: "center"
     },
     primaryButton: {
         backgroundColor: palette.darkGreen,
-        width: 200,
-        margin: "auto",
+        width: "60%",
+        marginHorizontal: "15%",
         paddingVertical: 5,
         marginTop: 15
     },
     totaux: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        width: "100%"
     },
     totalFinal: {
         fontSize: 20,

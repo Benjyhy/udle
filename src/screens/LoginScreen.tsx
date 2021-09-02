@@ -46,6 +46,7 @@ const LoginScreen = () => {
                 style={globalStyles.textInput}
                 placeholder={"Mot de passe"}
                 value={pwd}
+                secureTextEntry={true}
                 onChangeText={value => setPwd(value)}
             />
             <Paragraph>Mot de passe oublié&nbsp;?</Paragraph>

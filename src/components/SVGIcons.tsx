@@ -126,6 +126,25 @@ export function ChevronRightIcon() {
   )
 }
 
+export function GoBackIcon() {
+  return (
+    <Svg width="78" height="78" viewBox="0 0 78 78">
+      <G id="Groupe_284" data-name="Groupe 284" transform="translate(-21 -33)">
+        <G id="Groupe_218" data-name="Groupe 218" transform="translate(-294)">
+          <G transform="matrix(1, 0, 0, 1, 315, 33)">
+            <Rect id="Rectangle_143-2" data-name="Rectangle 143" width="48" height="48" rx="10" transform="translate(15 15)" fill="#fff" />
+          </G>
+        </G>
+        <G id="Return" transform="translate(50.827 65.023)">
+          <Path id="Tracé_137" data-name="Tracé 137" d="M12.18,10.416a1,1,0,0,1,0,1.411L6.906,17.1l5.276,5.274a1,1,0,1,1-1.411,1.411L4.791,17.806a1,1,0,0,1,0-1.411l5.979-5.979a1,1,0,0,1,1.411,0Z" transform="translate(-4.498 -10.123)" fill="#343434" fill-rule="evenodd" />
+          <Path id="Tracé_138" data-name="Tracé 138" d="M5.625,17.871a.9.9,0,0,1,.754-1h15.84a.9.9,0,0,1,.754,1,.9.9,0,0,1-.754,1H6.379A.9.9,0,0,1,5.625,17.871Z" transform="translate(-4.627 -10.895)" fill="#343434" fill-rule="evenodd" />
+        </G>
+      </G>
+    </Svg>
+  )
+}
+
+
 
 
 

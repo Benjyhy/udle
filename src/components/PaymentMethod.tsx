@@ -29,21 +29,24 @@ const styles = StyleSheet.create({
         borderColor: palette.lightGrey,
         paddingVertical: 20,
         paddingHorizontal: 20,
-        marginBottom: 20
+        marginBottom: 20,
+        flexDirection: "row",
+        alignItems: "center",
+        width: "100%"
     },
     methodContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: '75%'
+        justifyContent: 'flex-start',
+        width: '75%',
+        flex: 25
     },
     imgMethod: {
         width: 90,
-        height: 44
+        height: 44,
+        marginRight: 35
     },
     arrow: {
-        position: 'absolute',
-        right: 20,
-        top: "calc(50% - 6px)"
+        flex: 1
     }
 });
 

@@ -34,7 +34,7 @@ const FeedScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Title>Restaurants à proximité</Title>
+            <Title style={[globalStyles.title_emphasis, globalStyles.title_classic, styles.marginTopXL]}>Restaurants à proximité</Title>
             <SafeAreaView>
                 <FlatList
                     style={styles.proximite}
@@ -42,6 +42,32 @@ const FeedScreen = () => {
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     horizontal={true}
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                />
+            </SafeAreaView>
+            <Title style={[globalStyles.title_emphasis, globalStyles.title_classic, styles.marginTop]}>Vos favoris</Title>
+            <SafeAreaView>
+                <FlatList
+                    style={styles.proximite}
+                    data={data}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    horizontal={true}
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                />
+            </SafeAreaView>
+            <Title style={[globalStyles.title_emphasis, globalStyles.title_classic, styles.marginTop]}>Nouveautés</Title>
+            <SafeAreaView>
+                <FlatList
+                    style={styles.proximite}
+                    data={data}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    horizontal={true}
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
                 />
             </SafeAreaView>
         </View>
@@ -57,6 +83,12 @@ const styles = StyleSheet.create({
     proximite: {
         marginLeft: -20,
         marginRight: -20
+    },
+    marginTop: {
+        marginTop: 20
+    },
+    marginTopXL: {
+        marginTop: 40
     }
 });
 

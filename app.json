@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "udle",
-    "slug": "udle",
+    "name": "Easy Click",
+    "slug": "Easy_click",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ezclick.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/ezclick.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,12 +21,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/ezclick.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/ezclick.png"
     }
   }
 }

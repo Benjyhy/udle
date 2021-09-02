@@ -18,6 +18,7 @@ interface CartItem {
 
 const CartScreen = () => {
     const cart = useSelector((state: RootState) => state.cart);
+    const paid = useSelector((state: RootState) => state.paid);
     let isFilled = cart.length > 0;
 
     const [popinIsToggled, setPopinIsToggled] = useState(false);
@@ -55,18 +56,18 @@ const CartScreen = () => {
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     style={styles.listItem}
-                    ListHeaderComponent={isFilled ? () => <Title style={styles.listItemHeader}>Panier</Title> : () => <Text style={styles.listItemHeaderEmpty}>Vous n'avez pas d'article dans votre panier.</Text>}
+                    ListHeaderComponent={isFilled ? () => <View><Title style={styles.listItemHeader}>Panier</Title></View> : () => <View><Text style={styles.listItemHeaderEmpty}>Vous n'avez pas d'article dans votre panier.</Text></View>}
                 />
             </SafeAreaView>
-            {isFilled && popinIsToggled === false
+            {isFilled && popinIsToggled === false && paid === false
                 ? <Button icon="cart" color={"white"} style={[globalStyles.button, styles.primaryButton]} onPress={handlePayButton}>
                     <Text style={globalStyles.noTextTransform}>Payer</Text>
                 </Button>
-                : ''
+                : <View style={{ display: "none" }}></View>
             }
             {isFilled && popinIsToggled === true
                 ? <PopinPayment total={total} toggled={popinIsToggled} togglePopin={(value: any) => setPopinIsToggled(value)} />
-                : ''
+                : <View style={{ display: "none" }}></View>
             }
         </View>
     )
@@ -98,13 +99,12 @@ const styles = StyleSheet.create({
     },
     primaryButton: {
         backgroundColor: palette.darkGreen,
-        width: 200,
-        margin: "auto",
+        width: "50%",
+        marginHorizontal: "25%",
         paddingVertical: 5,
         marginTop: 15,
         position: 'absolute',
-        bottom: 100,
-        left: "calc(50% - 100px)"
+        bottom: 100
     },
 });
 

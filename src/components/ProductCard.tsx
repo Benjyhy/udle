@@ -7,7 +7,7 @@ import { AddIcon, RemoveIcon } from '../components/SVGIcons';
 import { palette } from '../../styles/base'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../reducers';
-import { addItem, removeItem, activeItem, unactiveItem } from '../actions';
+import { addItem, removeItem, activeItem, unactiveItem, paymentRequired } from '../actions';
 
 interface ProductCardProps {
     price: number,
@@ -23,6 +23,7 @@ const ProductCard = (item: ProductCardProps) => {
     const active = useSelector((state: RootState) => state.toggle);
 
     const handlePressProduct = () => {
+        dispatch(paymentRequired());
         if (active.includes(item.id)) {
             dispatch(removeItem(item));
             dispatch(unactiveItem(item));
